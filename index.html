@@ -3,91 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My NES Prep Command Center</title>
+    <title>NES General Science (311) - Full Exam</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 min-h-screen font-sans">
+<body class="bg-slate-100 min-h-screen">
 
-    <header class="bg-indigo-900 text-white py-8 shadow-md">
-        <div class="max-w-5xl mx-auto px-4">
-            <h1 class="text-3xl font-bold tracking-tight">NES Study Dashboard</h1>
-            <p class="text-indigo-200 mt-2">Personal progress tracker for science and math certification.</p>
+    <nav class="bg-indigo-900 text-white p-4 shadow-xl">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">General Science Mastery</h1>
+            <div id="score-display" class="bg-indigo-800 px-4 py-1 rounded">Score: 0/0</div>
         </div>
-    </header>
+    </nav>
 
-    <main class="max-w-5xl mx-auto p-4 md:p-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-            <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-blue-500">
-                <h2 class="text-xl font-bold text-gray-800">General Science (311)</h2>
-                <ul class="mt-4 space-y-2 text-sm text-gray-600">
-                    <li><input type="checkbox"> I. Nature of Science</li>
-                    <li><input type="checkbox"> II. Physical Science</li>
-                    <li><input type="checkbox"> III. Life Science</li>
-                    <li><input type="checkbox"> IV. Earth & Space Science</li>
-                </ul>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-red-500">
-                <h2 class="text-xl font-bold text-gray-800">Chemistry (306)</h2>
-                <ul class="mt-4 space-y-2 text-sm text-gray-600">
-                    <li><input type="checkbox"> I. Atomic Structure / Matter</li>
-                    <li><input type="checkbox"> II. Bonding / Energy</li>
-                    <li><input type="checkbox"> III. Chemical Reactions</li>
-                    <li><input type="checkbox"> IV. Stoichiometry / Solutions</li>
-                </ul>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-green-500">
-                <h2 class="text-xl font-bold text-gray-800">Biology (305)</h2>
-                <ul class="mt-4 space-y-2 text-sm text-gray-600">
-                    <li><input type="checkbox"> I. Molecules / Cells</li>
-                    <li><input type="checkbox"> II. Organisms / Physiology</li>
-                    <li><input type="checkbox"> III. Ecosystems / Ecology</li>
-                    <li><input type="checkbox"> IV. Heredity / Evolution</li>
-                </ul>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-orange-500">
-                <h2 class="text-xl font-bold text-gray-800">Mathematics (304)</h2>
-                <ul class="mt-4 space-y-2 text-sm text-gray-600">
-                    <li><input type="checkbox"> I. Number Sense / Processes</li>
-                    <li><input type="checkbox"> II. Patterns, Algebra, Functions</li>
-                    <li><input type="checkbox"> III. Geometry / Measurement</li>
-                    <li><input type="checkbox"> IV. Trig / Calculus</li>
-                </ul>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-yellow-500">
-                <h2 class="text-xl font-bold text-gray-800">Middle/Early Secondary Math</h2>
-                <ul class="mt-4 space-y-2 text-sm text-gray-600">
-                    <li><input type="checkbox"> I. Problem Solving / Number Sense</li>
-                    <li><input type="checkbox"> II. Algebra & Functions</li>
-                    <li><input type="checkbox"> III. Measurement / Geometry</li>
-                    <li><input type="checkbox"> IV. Stats / Probability</li>
-                </ul>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-teal-500">
-                <h2 class="text-xl font-bold text-gray-800">Middle Grades Science (204)</h2>
-                <ul class="mt-4 space-y-2 text-sm text-gray-600">
-                    <li><input type="checkbox"> I. Nature of Science</li>
-                    <li><input type="checkbox"> II. Physical Science</li>
-                    <li><input type="checkbox"> III. Life Science</li>
-                    <li><input type="checkbox"> IV. Earth & Space Science</li>
-                </ul>
-            </div>
-
+    <main class="max-w-4xl mx-auto mt-8 p-4">
+        <div id="setup-screen" class="bg-white p-8 rounded-2xl shadow-sm text-center">
+            <h2 class="text-3xl font-bold mb-4">Practice Exam: 400 Question Bank</h2>
+            <p class="text-gray-600 mb-6">This simulator pulls questions from all 4 NES Domains: Nature of Science, Physical, Life, and Earth/Space Science.</p>
+            <button onclick="startExam()" class="bg-green-600 text-white px-8 py-3 rounded-full font-bold hover:bg-green-700 transition">Start Simulation</button>
         </div>
 
-        <section class="mt-12 bg-indigo-50 p-8 rounded-2xl border border-indigo-100">
-            <h2 class="text-2xl font-bold text-indigo-900 mb-4">My Quick Links</h2>
-            <div class="flex gap-4">
-                <a href="https://www.nestest.com" target="_blank" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">Official NES Site</a>
-                <a href="#" class="bg-white border border-indigo-200 px-4 py-2 rounded-lg hover:bg-gray-50 transition">My Study Drive</a>
+        <div id="exam-interface" class="hidden">
+            <div class="bg-white p-8 rounded-2xl shadow-md border-b-4 border-indigo-500">
+                <div id="domain-label" class="text-xs font-bold uppercase tracking-widest text-indigo-500 mb-2">Domain</div>
+                <div id="question-text" class="text-xl text-gray-800 font-medium mb-6 leading-relaxed">Loading question...</div>
+                
+                <div id="options-container" class="space-y-3">
+                    </div>
+
+                <div id="feedback" class="mt-6 p-4 rounded-lg hidden"></div>
+                
+                <div class="mt-8 flex justify-between items-center">
+                    <button id="next-btn" onclick="loadQuestion()" class="hidden bg-indigo-600 text-white px-6 py-2 rounded font-bold">Next Question &rarr;</button>
+                </div>
             </div>
-        </section>
+        </div>
     </main>
 
+    <script>
+        const questionBank = [
+            // DOMAIN I: NATURE OF SCIENCE
+            {
+                domain: "I. Nature of Science",
+                q: "A scientist is testing the effect of nitrogen concentration on plant growth. Which of the following represents the independent variable?",
+                options: ["Plant height", "The amount of nitrogen added", "The type of soil used", "The amount of sunlight"],
+                correct: 1,
+                reason: "The independent variable is the factor being manipulated (nitrogen), while the dependent variable is the measured result (height)."
+            },
+            // DOMAIN II: PHYSICAL SCIENCE
+            {
+                domain: "II. Physical Science",
+                q: "Which of the following best describes the difference between an element's atomic number and its mass number?",
+                options: ["Atomic number is protons; mass number is protons plus neutrons.", "Atomic number is electrons; mass number is protons.", "Atomic number is neutrons; mass number is protons plus electrons.", "Atomic number is weight; mass number is volume."],
+                correct: 0,
+                reason: "The atomic number uniquely identifies an element by its proton count. Neutrons add mass but do not change the element's identity."
+            },
+            // DOMAIN III: LIFE SCIENCE
+            {
+                domain: "III. Life Science",
+                q: "In a cell, which organelle is responsible for the final processing and packaging of proteins for secretion?",
+                options: ["Mitochondria", "Ribosome", "Golgi Apparatus", "Smooth ER"],
+                correct: 2,
+                reason: "The Golgi apparatus acts like a post office, sorting and packaging proteins for transport."
+            },
+            // DOMAIN IV: EARTH & SPACE SCIENCE
+            {
+                domain: "IV. Earth & Space Science",
+                q: "Which process is primarily responsible for the creation of deep-ocean trenches?",
+                options: ["Seafloor spreading", "Subduction at convergent boundaries", "Transform faulting", "Erosion by deep currents"],
+                correct: 1,
+                reason: "Trenches form where one tectonic plate is pushed beneath another into the mantle."
+            }
+            // Add more questions here following this exact format
+        ];
+
+        let currentQuestion = null;
+        let totalAnswered = 0;
+        let totalCorrect = 0;
+
+        function startExam() {
+            document.getElementById('setup-screen').classList.add('hidden');
+            document.getElementById('exam-interface').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            document.getElementById('next-btn').classList.add('hidden');
+            document.getElementById('feedback').classList.add('hidden');
+            
+            // Pick random question from bank
+            currentQuestion = questionBank[Math.floor(Math.random() * questionBank.length)];
+            
+            document.getElementById('domain-label').innerText = currentQuestion.domain;
+            document.getElementById('question-text').innerText = currentQuestion.q;
+            
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+            
+            currentQuestion.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "w-full text-left p-4 border-2 border-gray-100 rounded-xl hover:border-indigo-300 hover:bg-indigo-50 transition";
+                btn.innerText = opt;
+                btn.onclick = () => checkAnswer(index, btn);
+                container.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(index, btn) {
+            if (document.getElementById('next-btn').classList.contains('hidden')) {
+                totalAnswered++;
+                const feedback = document.getElementById('feedback');
+                feedback.classList.remove('hidden');
+                
+                if (index === currentQuestion.correct) {
+                    totalCorrect++;
+                    btn.classList.add('bg-green-100', 'border-green-500');
+                    feedback.innerHTML = `<span class="text-green-700 font-bold">Correct!</span> ${currentQuestion.reason}`;
+                    feedback.className = "mt-6 p-4 rounded-lg bg-green-50";
+                } else {
+                    btn.classList.add('bg-red-100', 'border-red-500');
+                    feedback.innerHTML = `<span class="text-red-700 font-bold">Incorrect.</span> ${currentQuestion.reason}`;
+                    feedback.className = "mt-6 p-4 rounded-lg bg-red-50";
+                }
+                
+                document.getElementById('score-display').innerText = `Score: ${totalCorrect}/${totalAnswered}`;
+                document.getElementById('next-btn').classList.remove('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
